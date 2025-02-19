@@ -1,6 +1,6 @@
 class gameNode:
     def __init__(self, scoreFirst, scoreSecond, scoreBank
-                 , currentValue, nodeTwo, nodeThree, nodeFour):
+                 , currentValue):
         
         #Punktu skaita glabāšana
         self.scoreFirst  :int = scoreFirst
@@ -11,11 +11,12 @@ class gameNode:
         self.currentValue :int = currentValue
 
         #Nākamie iespējamie soļi
-        self.nodeTwo    :gameNode = nodeTwo
-        self.nodeThree  :gameNode = nodeThree
-        self.nodeFour   :gameNode = nodeFour
+        self.nodeTwo    :gameNode = None
+        self.nodeThree  :gameNode = None
+        self.nodeFour   :gameNode = None
 
         #kam ir kārta?
         #self.Turn :bool
 
         #self.previousNode :gameNode
+    
