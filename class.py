@@ -35,24 +35,17 @@ def populateTree(start : gameNode, maxValue : int) ->None:
         return
     else:
         bank=0
-        score1=0
-        score2=0
-        if (not (start.currentValue%5 or start.currentValue%10)):
+        even=0
+        if (not (start.currentValue%5)):
             bank=1
         if (not start.currentValue%2):
-            if(start.turn):
-                score1=-1
-            else:
-                score2=-1
+            even=-1
         else:
-            if(start.turn):
-                score1=1
-            else:
-                score2=1
+            even=1
         
-        start.nodeTwo=gameNode(start.scoreFirst+score1, start.scoreSecond+score2, start.scoreBank+bank, start.currentValue*2, not start.turn)
-        start.nodeThree=gameNode(start.scoreFirst+score1, start.scoreSecond+score2, start.scoreBank+bank, start.currentValue*3, not start.turn)
-        start.nodeFour=gameNode(start.scoreFirst+score1, start.scoreSecond+score2, start.scoreBank+bank, start.currentValue*4, not start.turn)
+        start.nodeTwo=  gameNode(start.scoreFirst+start.turn*-1, start.scoreSecond+(not start.turn)*-1, start.scoreBank+bank, start.currentValue*2, not start.turn)
+        start.nodeThree=gameNode(start.scoreFirst+start.turn*even, start.scoreSecond+(not start.turn)*even, start.scoreBank+bank, start.currentValue*3, not start.turn)
+        start.nodeFour= gameNode(start.scoreFirst+start.turn*-1, start.scoreSecond+(not start.turn)*-1, start.scoreBank+bank, start.currentValue*4, not start.turn)
 
         populateTree(start.nodeTwo,   maxValue)
         populateTree(start.nodeThree, maxValue)
